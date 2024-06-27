@@ -1,7 +1,7 @@
 const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowerCase = "abcdefghijklmnopqrstuvwxyz";
 const nums = "0123456789";
-const symbols = "!@#$%^&*_-+?/|";
+const symbols = "!@#$%^&*_-+?/|<>";
 
 function generatePassword(length) {
   const combinedChars = upperCase + lowerCase + nums + symbols;
