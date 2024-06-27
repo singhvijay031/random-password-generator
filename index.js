@@ -14,6 +14,6 @@ function generatePassword(length) {
   return password;
 }
 
-const passwordLength = 7;
+const passwordLength = 12;
 const randomPassword = generatePassword(passwordLength);
 console.log(`Generated Password: ${randomPassword}`);
