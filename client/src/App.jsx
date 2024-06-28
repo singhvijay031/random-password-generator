@@ -24,7 +24,7 @@ const App = () => {
     if (value > 64) {
       setLength(64);
     } else if (value < 1) {
-      setLength(0);
+      setLength(1);
     } else {
       setLength(value);
     }
@@ -41,6 +41,9 @@ const App = () => {
       )
       .then((response) => {
         setPassword(response.data.password);
+      })
+      .catch((error) => {
+        console.error("There was an error generating the password!", error);
       });
   };
 
@@ -60,7 +63,9 @@ const App = () => {
           </span>
         </div>
         <div className="pass-settings">
-          <label className="title">Password Settings:</label>
+          <label className="title" style={{ fontWeight: "bold" }}>
+            Password Settings
+          </label>
           <div className="length-setting">
             <label htmlFor="length">Password Length: </label>
             <input
