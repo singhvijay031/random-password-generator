@@ -24,7 +24,7 @@ const App = () => {
     if (value > 64) {
       setLength(64);
     } else if (value < 1) {
-      setLength(1);
+      setLength(0);
     } else {
       setLength(value);
     }
