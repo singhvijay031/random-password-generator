@@ -12,10 +12,8 @@ This project is a Random Password Generator web application built with Vite + Re
 - Set password length (up to 64 characters).
 - Copy generated password to clipboard.
 
-## Demo
-
-![Password Generator Demo](demo.gif)
-
+## Link
+- Link: https://random-password-generator-azure.vercel.app/
 ## Installation
 
 ### Prerequisites
@@ -45,7 +43,7 @@ This project is a Random Password Generator web application built with Vite + Re
    ```sh
    npm start
    ```
-   The backend server will run on `http://localhost:8000`.
+   The backend server will run on `http://localhost:3000`.
 
 ### Frontend Setup
 
