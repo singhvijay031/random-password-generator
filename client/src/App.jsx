@@ -24,7 +24,7 @@ const App = () => {
     if (value > 64) {
       setLength(64);
     } else if (value < 1) {
-      setLength(1);
+      setLength(0);
     } else {
       setLength(value);
     }
@@ -57,7 +57,7 @@ const App = () => {
           </span>
         </div>
         <div className="pass-settings">
-          <label className="title">Password Settings</label>
+          <label className="title">Password Settings:</label>
           <div className="length-setting">
             <label htmlFor="length">Password Length: </label>
             <input
