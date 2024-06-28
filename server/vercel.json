@@ -1,15 +1,36 @@
 {
-    "version": 2,
+    "projects": [
+      {
+        "name": "random-password-generator-client",
+        "root": "client",
+        "framework": "create vite@latest",
+        "buildCommand": "npm run build",
+        "outputDirectory": "build",
+        "devCommand": "npm run dev"
+      },
+      {
+        "name": "random-password-generator-server",
+        "root": "server",
+        "framework": "node",
+        "buildCommand": "",
+        "outputDirectory": "",
+        "devCommand": "node index.js"
+      }
+    ],
     "builds": [
       {
-        "src": "index.js",
+        "src": "server/index.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/api/(.*)",
-        "dest": "/index.js"
+        "dest": "/server/api/generate-password.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/client/$1"
       }
     ]
   }
