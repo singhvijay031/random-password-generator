@@ -32,10 +32,13 @@ const App = () => {
 
   const generatePassword = () => {
     axios
-      .post("http://localhost:8000/generate-password", {
-        length: length,
-        options: options,
-      })
+      .post(
+        "https://random-password-generator-xyz.vercel.app/api/generate-password",
+        {
+          length: length,
+          options: options,
+        }
+      )
       .then((response) => {
         setPassword(response.data.password);
       });
