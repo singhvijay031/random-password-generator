@@ -2,8 +2,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 500px;
   margin-top: 50px;
-  padding: 0;
+ 
 }
 
 .container {
@@ -58,6 +59,10 @@ body {
   margin: 1.56rem 0 1.25rem;
 }
 
+.pass-settings .title {
+  font-weight: bold;
+}
+
 .pass-settings .options {
   display: flex;
   list-style: none;
@@ -88,7 +93,7 @@ body {
   padding-left: 0.63rem;
 }
 
-.pass-settings input[type='checkbox'] {
+.pass-settings input[type="checkbox"] {
   accent-color: #46496e;
 }
 
