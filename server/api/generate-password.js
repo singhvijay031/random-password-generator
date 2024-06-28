@@ -1,4 +1,4 @@
-// backend/api/generate-password.js
+
 module.exports = (req, res) => {
   const { length, options } = req.body;
   const password = generatePassword(length, options);
@@ -6,41 +6,33 @@ module.exports = (req, res) => {
 };
 
 function generatePassword(length, options) {
-  // Password generation logic here
-  function generatePassword(length, options) {
-    const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
-    const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const numberChars = "0123456789";
-    const symbolChars = "!-$^+";
-    const spaceChar = " ";
+  const charset = {
+    lowercase: "abcdefghijklmnopqrstuvwxyz",
+    uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    numbers: "0123456789",
+    symbols: "!@#$%^&*()_+~`|}{[]:;?><,./-=",
+  };
 
-    let characters = "";
-    if (options.lowercase) characters += lowercaseChars;
-    if (options.uppercase) characters += uppercaseChars;
-    if (options.numbers) characters += numberChars;
-    if (options.symbols) characters += symbolChars;
-    if (options.spaces) characters += spaceChar;
+  let password = "";
+  let characters = "";
 
-    if (characters === "") {
-      throw new Error("At least one option must be selected.");
-    }
+  if (options.lowercase) characters += charset.lowercase;
+  if (options.uppercase) characters += charset.uppercase;
+  if (options.numbers) characters += charset.numbers;
+  if (options.symbols) characters += charset.symbols;
 
-    let password = "";
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      password += characters[randomIndex];
-    }
-
-    return password;
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    password += characters[randomIndex];
   }
 
-  module.exports = (req, res) => {
-    try {
-      const { length, options } = req.body;
-      const password = generatePassword(length, options);
-      res.status(200).json({ password });
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  };
+  if (options.excludeDuplicate) {
+    password = Array.from(new Set(password.split(""))).join("");
+  }
+
+  if (options.spaces) {
+    password = password.replace(/(.{4})/g, "$1 ");
+  }
+
+  return password.trim();
 }
